@@ -133,8 +133,8 @@ Checklists for reviewing authentication, authorization, sessions, sensitive data
 
 ## Contact
 
-- Portfolio: https://lichq1337.github.io
-- LinkedIn: https://www.linkedin.com/in/lisandrocragnolini/
+- Portfolio: **[lcksec]https://lichq1337.github.io**
+- LinkedIn: **[lcksec]https://www.linkedin.com/in/lisandrocragnolini/**
 
 ---
 
