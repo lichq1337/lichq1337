@@ -14,7 +14,7 @@ Actualmente busco oportunidades junior en **AppSec**, **Security Analyst**, **Bu
 
 Mi portfolio profesional:
 
-**https://lichq1337.github.io**
+**[lcksec](https://lichq1337.github.io/lichq1337/)**
 
 ---
 
