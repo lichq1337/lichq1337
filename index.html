@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio profesional de Security Researcher especializado en AppSec, Bug Bounty y prevención digital." />
+  <title>lcksec | Security Researcher</title>
+
+  <style>
+    :root {
+      --bg: #070b10;
+      --bg-soft: #0d141d;
+      --card: rgba(255, 255, 255, 0.045);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text: #f4f7fb;
+      --muted: #9ca9b8;
+      --accent: #2aa6a1;
+      --accent-soft: rgba(42, 166, 161, 0.14);
+      --line: rgba(255, 255, 255, 0.1);
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(42, 166, 161, 0.18), transparent 32%),
+        radial-gradient(circle at 80% 0%, rgba(36, 87, 122, 0.22), transparent 34%),
+        linear-gradient(135deg, #05070a 0%, #071018 55%, #05070a 100%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.75), transparent 75%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(7, 11, 16, 0.72);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      background: linear-gradient(145deg, rgba(42, 166, 161, 0.22), rgba(255, 255, 255, 0.04));
+      box-shadow: 0 14px 40px rgba(42, 166, 161, 0.08);
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .nav-links a {
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--card-border);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      font-weight: 650;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(42, 166, 161, 0.55);
+      background: rgba(42, 166, 161, 0.12);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2aa6a1, #1c6e78);
+      border-color: rgba(42, 166, 161, 0.75);
+      color: #061014;
+      box-shadow: 0 18px 45px rgba(42, 166, 161, 0.16);
+    }
+
+    .hero {
+      padding: 96px 0 70px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      padding: 8px 12px;
+      border: 1px solid rgba(42, 166, 161, 0.22);
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #a9fffa;
+      font-size: 0.86rem;
+      font-weight: 650;
+    }
+
+    .pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(42, 166, 161, 0.14);
+    }
+
+    h1 {
+      max-width: 780px;
+      font-size: clamp(2.7rem, 7vw, 5.8rem);
+      line-height: 0.94;
+      letter-spacing: -0.075em;
+      margin-bottom: 24px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 0%, #93fff8 50%, #7f94a7 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 660px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.8;
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 680px;
+    }
+
+    .stat {
+      padding: 18px;
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.35rem;
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.4;
+    }
+
+    .terminal-card {
+      position: relative;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .terminal-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .terminal-body {
+      padding: 22px;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.91rem;
+      color: #c8d5df;
+      line-height: 1.8;
+    }
+
+    .terminal-body .muted {
+      color: #6f7f8e;
+    }
+
+    .terminal-body .accent {
+      color: #72fff6;
+    }
+
+    .terminal-body .success {
+      color: #b7ffcc;
+    }
+
+    section {
+      padding: 58px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: -0.055em;
+    }
+
+    .section-head p {
+      max-width: 520px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      padding: 24px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      background: var(--card);
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(42, 166, 161, 0.35);
+      background: rgba(255, 255, 255, 0.065);
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      border-radius: 15px;
+      background: var(--accent-soft);
+      color: #97fff8;
+      border: 1px solid rgba(42, 166, 161, 0.18);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.08rem;
+      letter-spacing: -0.02em;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .skill-visual {
+      margin-bottom: 18px;
+      padding: 26px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.025));
+      box-shadow: 0 18px 54px rgba(0, 0, 0, 0.22);
+    }
+
+    .skill-visual-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .skill-visual h3 {
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .skill-visual p {
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.94rem;
+      max-width: 680px;
+    }
+
+    .icon-groups {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .icon-group {
+      padding: 14px;
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .icon-group h4 {
+      margin-bottom: 6px;
+      font-size: 0.92rem;
+      letter-spacing: -0.02em;
+      color: #eef7ff;
+    }
+
+    .icon-group p {
+      margin-bottom: 10px;
+      font-size: 0.84rem;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .skill-icons {
+      width: 100%;
+      max-width: 420px;
+      height: auto;
+      display: block;
+    }
+
+    .manual-tool-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .manual-tool {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.045);
+      color: #d7e4ef;
+      font-size: 0.86rem;
+      font-weight: 650;
+    }
+
+    .manual-tool-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: linear-gradient(145deg, rgba(255, 117, 74, 0.22), rgba(255, 255, 255, 0.04));
+      border: 1px solid rgba(255, 117, 74, 0.22);
+      color: #ff9a76;
+      font-size: 0.74rem;
+      letter-spacing: -0.02em;
+    }
+
+    .skill-groups {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .skill-group {
+      padding: 18px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .skill-group h3 {
+      margin-bottom: 12px;
+      font-size: 0.98rem;
+      letter-spacing: -0.02em;
+      color: #eef7ff;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      padding: 8px 11px;
+      border: 1px solid var(--card-border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.045);
+      color: #d7e4ef;
+      font-size: 0.92rem;
+    }
+
+    .project-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .project {
+      padding: 24px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.025));
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .tag {
+      white-space: nowrap;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #9ffff9;
+      font-size: 0.78rem;
+      font-weight: 650;
+    }
+
+    .project h3 {
+      font-size: 1.18rem;
+      letter-spacing: -0.02em;
+    }
+
+    .project p {
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+
+    .project a {
+      color: #9ffff9;
+      font-weight: 700;
+      font-size: 0.94rem;
+    }
+
+    .cta {
+      padding: 36px;
+      border-radius: calc(var(--radius) + 6px);
+      border: 1px solid rgba(42, 166, 161, 0.22);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(42, 166, 161, 0.18), transparent 34%),
+        linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .cta h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      letter-spacing: -0.055em;
+      margin-bottom: 10px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 640px;
+    }
+
+    .owasp-panel {
+      margin-top: 18px;
+      padding: 30px;
+      border: 1px solid var(--card-border);
+      border-radius: calc(var(--radius) + 6px);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025));
+      box-shadow: 0 18px 54px rgba(0, 0, 0, 0.22);
+    }
+
+    .owasp-intro {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 22px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .owasp-intro h2 {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      letter-spacing: -0.055em;
+      margin-bottom: 10px;
+    }
+
+    .owasp-intro p {
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 760px;
+    }
+
+    .owasp-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .owasp-item {
+      padding: 18px;
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .owasp-item-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .owasp-item h3 {
+      font-size: 0.98rem;
+      letter-spacing: -0.02em;
+      line-height: 1.35;
+    }
+
+    .owasp-item p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+
+    .severity {
+      white-space: nowrap;
+      padding: 6px 9px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 750;
+      border: 1px solid var(--card-border);
+    }
+
+    .severity-critical {
+      color: #ffd2d2;
+      background: rgba(255, 73, 73, 0.13);
+      border-color: rgba(255, 73, 73, 0.24);
+    }
+
+    .severity-high {
+      color: #ffe2bf;
+      background: rgba(255, 145, 61, 0.13);
+      border-color: rgba(255, 145, 61, 0.24);
+    }
+
+    .severity-medium {
+      color: #fff5c7;
+      background: rgba(255, 213, 75, 0.12);
+      border-color: rgba(255, 213, 75, 0.22);
+    }
+
+    footer {
+      padding: 34px 0 46px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 860px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 70px;
+      }
+
+      .hero-grid,
+      .project-list,
+      .cards,
+      .skill-groups,
+      .icon-groups {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head,
+      .cta,
+      .owasp-intro {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .owasp-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Inicio">
+        <span class="brand-mark">LCK</span>
+        <span>lcksec</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#about">Perfil</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Áreas</a>
+        <a href="#contact">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">
+            <span class="pulse"></span>
+            Junior Security Researcher · AppSec · Bug Bounty
+          </div>
+
+          <h1>
+            Building practical security through <span class="gradient-text">research, prevention and impact.</span>
+          </h1>
+
+          <p>
+            Soy Junior Security Researcher enfocado en seguridad de aplicaciones, OWASP Top 10, análisis de superficies expuestas y prevención digital. Actualmente busco oportunidades junior en AppSec, Security Analyst, Bug Bounty Research o roles relacionados, con disponibilidad inmediata para trabajar.
+          </p>
+
+
+          <div class="stats" aria-label="Áreas principales">
+            <div class="stat">
+              <strong>AppSec</strong>
+              <span>Testing web, APIs, auth y access control.</span>
+            </div>
+            <div class="stat">
+              <strong>Recon</strong>
+              <span>Subdomains, endpoints, JS analysis y exposed assets.</span>
+            </div>
+            <div class="stat">
+              <strong>Available</strong>
+              <span>Disponibilidad inmediata para roles junior de seguridad.</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="terminal-card" aria-label="Resumen técnico">
+          <div class="terminal-top">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <div class="terminal-body">
+            <p><span class="muted">$</span> whoami</p>
+            <p><span class="accent">junior_security_researcher</span></p>
+            <br />
+            <p><span class="muted">$</span> focus --areas</p>
+            <p>OWASP Top 10 · CWE/CVE · API Security</p>
+            <p>Access control · Exposed secrets · Recon</p>
+            <br />
+            <p><span class="muted">$</span> mission</p>
+            <p><span class="success">no se puede proteger lo que no se conoce</span></p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <h2>Perfil profesional</h2>
+          <p>Perfil junior con mirada técnica y preventiva: encontrar fallas, explicar impacto real y convertir seguridad en decisiones simples.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">01</div>
+            <h3>Application Security</h3>
+            <p>Revisión de flujos web, autenticación, autorización, sesiones, APIs y controles de acceso desde una mirada ofensiva y defensiva.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">02</div>
+            <h3>Bug Bounty Research</h3>
+            <p>Búsqueda de impacto real mediante recon, análisis de endpoints, revisión de JavaScript, exposición de datos y lógica de negocio.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">03</div>
+            <h3>Digital Security Prevention</h3>
+            <p>Contenido, consultoría y educación práctica para reducir riesgos cotidianos: phishing, contraseñas, 2FA, accesos y hábitos seguros.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head">
+          <h2>Skills & tools</h2>
+          <p>Stack actual orientado a Web Security, AppSec, bug bounty, recon web, análisis de tráfico y clasificación de vulnerabilidades mediante CWE/CVE. Enfoque metodológico: reconocer superficie expuesta, mapear endpoints, entender flujos, validar controles y documentar impacto real.</p>
+        </div>
+
+        <div class="skill-visual">
+          <div class="skill-visual-top">
+            <div>
+              <h3>Web Security methodology stack</h3>
+              <p>Base técnica coherente con investigación web: Linux/Kali, scripting con Python, lectura de JavaScript para análisis de endpoints, APIs, automatización ligera, documentación técnica y análisis de vulnerabilidades con referencias CWE/CVE.</p>
+            </div>
+            <span class="tag">Real stack</span>
+          </div>
+
+          <div class="icon-groups">
+            <div class="icon-group">
+              <h4>Security environment</h4>
+              <p>Entorno de trabajo para laboratorios, testing web y análisis técnico.</p>
+              <img
+                class="skill-icons"
+                src="https://skillicons.dev/icons?i=kali,linux,bash,vscode&theme=dark&perline=4"
+                alt="Kali, Linux, Bash y VS Code"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="icon-group">
+              <h4>Automation & scripting</h4>
+              <p>Automatización asistida, scripts simples y apoyo en recon.</p>
+              <img
+                class="skill-icons"
+                src="https://skillicons.dev/icons?i=py,bash,git&theme=dark&perline=3"
+                alt="Python, Bash y Git"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="icon-group">
+              <h4>Manual testing</h4>
+              <p>Pruebas manuales, intercepción de requests, comparación de respuestas y validación de impacto en flujos web.</p>
+              <div class="manual-tool-icons" aria-label="Herramientas de pruebas manuales">
+                <span class="manual-tool"><span class="manual-tool-mark">BURP</span>Burp Suite</span>
+                <span class="manual-tool"><span class="manual-tool-mark">CAIDO</span>Caido</span>
+                <span class="manual-tool"><span class="manual-tool-mark">CHAR</span>Charles Proxy</span>
+              </div>
+            </div>
+
+            <div class="icon-group">
+              <h4>Web & API analysis</h4>
+              <p>Lectura de JavaScript, análisis de endpoints y revisión de configuración web.</p>
+              <img
+                class="skill-icons"
+                src="https://skillicons.dev/icons?i=js,nginx,docker&theme=dark&perline=3"
+                alt="JavaScript, Nginx y Docker"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="icon-group">
+              <h4>Knowledge base & reporting</h4>
+              <p>Notas de investigación, documentación técnica y organización de metodología.</p>
+              <img
+                class="skill-icons"
+                src="https://skillicons.dev/icons?i=github,notion,obsidian,vscode&theme=dark&perline=4"
+                alt="GitHub, Notion, Obsidian y VS Code"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-groups">
+          <div class="skill-group">
+            <h3>Web Security Methodology</h3>
+            <div class="skills">
+              <span class="skill">Burp Suite</span>
+              <span class="skill">OWASP Top 10</span>
+              <span class="skill">Web App Testing</span>
+              <span class="skill">Manual Security Testing</span>
+              <span class="skill">Request Interception</span>
+              <span class="skill">Burp Suite Workflow</span>
+              <span class="skill">Caido</span>
+              <span class="skill">Charles Proxy</span>
+              <span class="skill">API Security</span>
+              <span class="skill">Attack Surface Review</span>
+              <span class="skill">Endpoint Mapping</span>
+              <span class="skill">Auth Flow Review</span>
+              <span class="skill">Access Control Review</span>
+              <span class="skill">Broken Access Control</span>
+              <span class="skill">IDOR</span>
+              <span class="skill">Authentication Testing</span>
+              <span class="skill">Session Testing</span>
+              <span class="skill">Business Logic Review</span>
+              <span class="skill">Payload Testing</span>
+              <span class="skill">Response Comparison</span>
+              <span class="skill">Impact-driven Validation</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3>Vulnerability Research</h3>
+            <div class="skills">
+              <span class="skill">CWE Mapping</span>
+              <span class="skill">CVE Research</span>
+              <span class="skill">Vulnerability Classification</span>
+              <span class="skill">Impact Analysis</span>
+              <span class="skill">Vulnerability Chaining</span>
+              <span class="skill">Exposed Secrets Review</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3>Recon & Automation</h3>
+            <div class="skills">
+              <span class="skill">Reconnaissance</span>
+              <span class="skill">Python-assisted Automation</span>
+              <span class="skill">Nmap</span>
+              <span class="skill">httpx</span>
+              <span class="skill">subfinder</span>
+              <span class="skill">nuclei</span>
+              <span class="skill">katana</span>
+              <span class="skill">ffuf</span>
+              <span class="skill">gau</span>
+              <span class="skill">waybackurls</span>
+              <span class="skill">ParamSpider</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3>Traffic, Frontend & Analysis</h3>
+            <div class="skills">
+              <span class="skill">JavaScript Endpoint Analysis</span>
+              <span class="skill">XSStrike</span>
+              <span class="skill">Wireshark</span>
+              <span class="skill">Notion</span>
+              <span class="skill">Obsidian</span>
+              <span class="skill">Technical Notes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <h2>Áreas en desarrollo</h2>
+          <p>Líneas de trabajo que estoy construyendo para ordenar mi aprendizaje, metodología y documentación técnica sin presentar repositorios que todavía no están publicados.</p>
+        </div>
+
+        <div class="project-list">
+          <article class="project">
+            <div class="project-top">
+              <h3>SENTRUA Prevention</h3>
+              <span class="tag">Prevention</span>
+            </div>
+            <p>Proyecto de educación y prevención digital enfocado en hábitos seguros, protección de cuentas, phishing awareness y reducción de exposición.</p>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <h3>Web Security Methodology</h3>
+              <span class="tag">Research</span>
+            </div>
+            <p>Metodología en construcción para ordenar recon, análisis de endpoints, pruebas manuales con Burp Suite, revisión de flujos, clasificación CWE/CVE, validación de impacto y documentación técnica.</p>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <h3>Recon Toolkit</h3>
+              <span class="tag">Automation</span>
+            </div>
+            <p>Comandos, scripts y flujos de reconocimiento para entornos autorizados: subdominios, endpoints, crawling, tecnologías y archivos históricos.</p>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <h3>AppSec Checklists</h3>
+              <span class="tag">Documentation</span>
+            </div>
+            <p>Checklists para revisar autenticación, autorización, sesiones, datos sensibles, exposición pública y controles básicos de seguridad.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <h2>Security with clarity, impact and prevention.</h2>
+            <p>Disponible de forma inmediata para oportunidades junior relacionadas con AppSec, Security Analyst, análisis de exposición digital, documentación técnica y laboratorios de seguridad.</p>
+          </div>
+          <a class="btn btn-primary" href="mailto:tuemail@dominio.com">Contactar</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="owasp-top-10">
+      <div class="container">
+        <div class="owasp-panel">
+          <div class="owasp-intro">
+            <div>
+              <h2>OWASP Top 10 categorization</h2>
+              <p>Uso OWASP Top 10 como guía de priorización para entender qué fallas pueden generar mayor impacto en aplicaciones web. El foco no está en memorizar nombres, sino en reconocer patrones de riesgo, validar criticidad y documentar impacto real.</p>
+            </div>
+            <span class="tag">Web Risk</span>
+          </div>
+
+          <div class="owasp-grid">
+            <article class="owasp-item">
+              <div class="owasp-item-top">
+                <h3>A01 · Broken Access Control</h3>
+                <span class="severity severity-critical">Critical</span>
+              </div>
+              <p>Fallas que permiten acceder, modificar o ejecutar acciones fuera de los permisos esperados. Incluye IDOR, escalación de privilegios y bypass de autorización.</p>
+            </article>
+
+            <article class="owasp-item">
+              <div class="owasp-item-top">
+                <h3>A02 · Security Misconfiguration</h3>
+                <span class="severity severity-high">High</span>
+              </div>
+              <p>Configuraciones inseguras, servicios expuestos, headers ausentes, permisos débiles, entornos mal desplegados o errores que amplían la superficie de ataque.</p>
+            </article>
+
+            <article class="owasp-item">
+              <div class="owasp-item-top">
+                <h3>A03 · Software Supply Chain Failures</h3>
+                <span class="severity severity-high">High</span>
+              </div>
+              <p>Riesgos asociados a dependencias, componentes, procesos de build, librerías de terceros o artefactos que introducen debilidades en la aplicación.</p>
+            </article>
+
+            <article class="owasp-item">
+              <div class="owasp-item-top">
+                <h3>A04 · Cryptographic Failures</h3>
+                <span class="severity severity-high">High</span>
+              </div>
+              <p>Errores de cifrado, exposición de datos sensibles, uso débil de secretos o protección insuficiente de información crítica en tránsito o reposo.</p>
+            </article>
+
+            <article class="owasp-item">
+              <div class="owasp-item-top">
+                <h3>A05 · Injection</h3>
+                <span class="severity severity-high">High</span>
+              </div>
+              <p>Entrada no controlada que puede alterar consultas, comandos o intérpretes. Puede incluir SQLi, command injection, NoSQL injection o XSS según contexto.</p>
+            </article>
+
+            <article class="owasp-item">
+              <div class="owasp-item-top">
+                <h3>A06 · Insecure Design</h3>
+                <span class="severity severity-high">High</span>
+              </div>
+              <p>Problemas de diseño donde el flujo, la lógica o los controles de seguridad no fueron pensados para resistir abuso real.</p>
+            </article>
+
+            <article class="owasp-item">
+              <div class="owasp-item-top">
+                <h3>A07 · Authentication Failures</h3>
+                <span class="severity severity-high">High</span>
+              </div>
+              <p>Debilidades en login, recuperación de contraseña, tokens, MFA, sesiones o validación de identidad que pueden permitir acceso no autorizado.</p>
+            </article>
+
+            <article class="owasp-item">
+              <div class="owasp-item-top">
+                <h3>A08 · Software or Data Integrity Failures</h3>
+                <span class="severity severity-high">High</span>
+              </div>
+              <p>Fallas al confiar en código, datos, actualizaciones o procesos sin verificar integridad, origen o manipulación.</p>
+            </article>
+
+            <article class="owasp-item">
+              <div class="owasp-item-top">
+                <h3>A09 · Logging & Alerting Failures</h3>
+                <span class="severity severity-medium">Medium</span>
+              </div>
+              <p>Ausencia de registros útiles, monitoreo o alertas que impide detectar abuso, responder a incidentes o entender el alcance de una intrusión.</p>
+            </article>
+
+            <article class="owasp-item">
+              <div class="owasp-item-top">
+                <h3>A10 · Mishandling of Exceptional Conditions</h3>
+                <span class="severity severity-medium">Medium</span>
+              </div>
+              <p>Manejo deficiente de errores, estados inesperados o condiciones excepcionales que pueden revelar información, romper controles o generar comportamiento inseguro.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 lcksec · Junior Security Researcher</span>
+      <span>AppSec · Bug Bounty · Digital Security Prevention</span>
+    </div>
+  </footer>
+</body>
+</html>
