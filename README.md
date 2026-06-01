@@ -1,6 +1,6 @@
 # lcksec
 
-** Information Security | AppSec | Web Security | Bug Bounty Hunter**
+** Information Security | AppSec | Web Security | Bug Bounty Hunter **
 
 > No se puede proteger lo que no se conoce.
 
