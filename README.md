@@ -1,6 +1,6 @@
 # lcksec
 
-**Junior Security Researcher | AppSec | Web Security | Bug Bounty**
+**Junior Information Security | AppSec | Web Security | Bug Bounty Hunter**
 
 > No se puede proteger lo que no se conoce.
 
