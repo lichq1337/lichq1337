@@ -1,12 +1,11 @@
 # lcksec
 
-**Junior Information Security | AppSec | Web Security | Bug Bounty Hunter**
+** Information Security | AppSec | Web Security | Bug Bounty Hunter**
 
 > No se puede proteger lo que no se conoce.
 
-Soy Junior Security Researcher enfocado en seguridad de aplicaciones, OWASP Top 10, análisis de superficies expuestas, recon web y prevención digital.
+Consultant Information Security enfocado en seguridad de aplicaciones, OWASP Top 10, análisis de superficies expuestas, recon web y prevención digital.
 
-Actualmente busco oportunidades junior en **AppSec**, **Security Analyst**, **Bug Bounty Research** o roles relacionados, con disponibilidad inmediata para trabajar.
 
 ---
 
